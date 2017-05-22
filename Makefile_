@@ -1,6 +1,7 @@
 
 all:
-	make 
+	make LD_LIBRARY_PATH=../../install/lib LDFLAGS="-lncursesw -lterminfo -lunibilium" LDFLAGS="-lncursesw -lterminfo -lunibilium"
+
 
 install:
 	make install-inc install-lib

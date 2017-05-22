@@ -1,4 +1,4 @@
-pkgconfig = $(shell LD_LIBRARY_PATH=../../install/lib PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config $(1))
+pkgconfig = $(shell PKG_CONFIG_PATH=$(PKG_CONFIG_PATH) pkg-config $(1))
 
 ifeq ($(shell uname),Darwin)
   LIBTOOL ?= glibtool
@@ -66,7 +66,7 @@ MAN7DIR=$(MANDIR)/man7
 all: $(LIBRARY) $(DEMOS)
 
 %.lo: %.c termkey.h termkey-internal.h
-	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -DHAVE_UNIBILIUM  -o $@ -c $< -lunibilium
+	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS)  -o $@ -c $< 
 
 $(LIBRARY): $(OBJECTS)
 	$(LIBTOOL) --mode=link --tag=CC $(CC) -rpath $(LIBDIR) -version-info $(VERSION_CURRENT):$(VERSION_REVISION):$(VERSION_AGE) $(LDFLAGS) -o $@ $^
