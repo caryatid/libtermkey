@@ -24,9 +24,6 @@ endif
 ifeq ($(call pkgconfig, --atleast-version=0.1.0 unibilium && echo 1),1)
   override CFLAGS +=$(call pkgconfig, --cflags unibilium) -DHAVE_UNIBILIUM
   override LDFLAGS+=$(call pkgconfig, --libs   unibilium)
-else ifeq ($(call pkgconfig, tinfo && echo 1),1)
-  override CFLAGS +=$(call pkgconfig, --cflags tinfo)
-  override LDFLAGS+=$(call pkgconfig, --libs   tinfo)
 else ifeq ($(call pkgconfig, terminfo && echo 1),1)
   override CFLAGS +=$(call pkgconfig, --cflags terminfo)
   override LDFLAGS+=$(call pkgconfig, --libs   terminfo)
