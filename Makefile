@@ -31,7 +31,7 @@ else ifeq ($(call pkgconfig, ncursesw && echo 1),1)
   override CFLAGS +=$(call pkgconfig, --cflags ncursesw)
   override LDFLAGS+=$(call pkgconfig, --libs   ncursesw)
 else
-  override LDFLAGS+=-lncurses
+  override LDFLAGS+=-lncursesw
 endif
 
 OBJECTS=termkey.lo driver-csi.lo driver-ti.lo
