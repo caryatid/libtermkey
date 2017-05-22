@@ -10,6 +10,7 @@ ifneq ($(VERBOSE),1)
   LIBTOOL +=--quiet
 endif
 
+
 override CFLAGS +=-Wall -std=c99
 
 ifeq ($(DEBUG),1)
@@ -65,7 +66,7 @@ MAN7DIR=$(MANDIR)/man7
 all: $(LIBRARY) $(DEMOS)
 
 %.lo: %.c termkey.h termkey-internal.h
-	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -lterminfo -o $@ -c $<
+	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -o $@ -c $<
 
 $(LIBRARY): $(OBJECTS)
 	$(LIBTOOL) --mode=link --tag=CC $(CC) -rpath $(LIBDIR) -version-info $(VERSION_CURRENT):$(VERSION_REVISION):$(VERSION_AGE) $(LDFLAGS) -o $@ $^
