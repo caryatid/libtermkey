@@ -1,6 +1,6 @@
 
 all:
-	make LD_LIBRARY_PATH=../../install/lib LDFLAGS="-lncursesw -lterminfo -lunibilium" CFLAGS="-lncursesw -lterminfo -lunibilium"
+	make LD_LIBRARY_PATH=../../install/lib LDFLAGS="-lncursesw -lterminfo -lunibilium" CFLAGS="-lncursesw -lterminfo -lunibilium -DHAVE_UNIBILIUM"
 
 
 install:
