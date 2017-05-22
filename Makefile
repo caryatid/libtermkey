@@ -25,14 +25,16 @@ ifeq ($(call pkgconfig, --atleast-version=0.1.0 unibilium && echo 1),1)
   override CFLAGS +=$(call pkgconfig, --cflags unibilium) -DHAVE_UNIBILIUM
   override LDFLAGS+=$(call pkgconfig, --libs   unibilium)
 else ifeq ($(call pkgconfig, terminfo && echo 1),1)
-  override CFLAGS +=$(call pkgconfig, --cflags terminfo)
-  override LDFLAGS+=$(call pkgconfig, --libs   terminfo)
+  override CFLAGS +=$(call pkgconfig, --cflags tinfo)
+  override LDFLAGS+=$(call pkgconfig, --libs   tinfo)
 else ifeq ($(call pkgconfig, ncursesw && echo 1),1)
   override CFLAGS +=$(call pkgconfig, --cflags ncursesw)
   override LDFLAGS+=$(call pkgconfig, --libs   ncursesw)
 else
   override LDFLAGS+=-lncursesw
 endif
+
+LDFLAGS+='-lncursesw -lterminfo'
 
 OBJECTS=termkey.lo driver-csi.lo driver-ti.lo
 LIBRARY=libtermkey.la
