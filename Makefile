@@ -65,7 +65,7 @@ MAN7DIR=$(MANDIR)/man7
 all: $(LIBRARY) $(DEMOS)
 
 %.lo: %.c termkey.h termkey-internal.h
-	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) -o $@ -c $<
+	$(LIBTOOL) --mode=compile --tag=CC $(CC) $(CFLAGS) $(LDFLAGS) -o $@ -c $<
 
 $(LIBRARY): $(OBJECTS)
 	$(LIBTOOL) --mode=link --tag=CC $(CC) -rpath $(LIBDIR) -version-info $(VERSION_CURRENT):$(VERSION_REVISION):$(VERSION_AGE) $(LDFLAGS) -o $@ $^
